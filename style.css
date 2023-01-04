@@ -1,0 +1,11 @@
+.hidden {
+    display: none;
+}
+
+.nav-item:hover {
+    background-color: grey;
+}
+
+#nav-container {
+    width: 50%;
+}
