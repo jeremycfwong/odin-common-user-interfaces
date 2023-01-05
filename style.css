@@ -7,5 +7,24 @@
 }
 
 #nav-container {
-    width: 50%;
+    width: 50vw;
+}
+
+.img-swiper {
+    width: 50rem;
+    height: 30rem;
+    border: 1px black solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.img-swiper-item {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
 }
