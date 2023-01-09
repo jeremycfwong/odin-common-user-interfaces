@@ -27,8 +27,9 @@ swiperNextButton.addEventListener('click', (_) => {
     plusSlides(1)
 })
 
-let slideIndex = 1;
-showSlides(slideIndex);
+let slideIndex = 0;
+autoUpdate();
+
 
 function plusSlides(n) {
     showSlides(slideIndex += n);
@@ -36,6 +37,11 @@ function plusSlides(n) {
 
 function currentSlide(n) {
     showSlides (slideIndex = n)
+}
+
+function autoUpdate(){
+    showSlides(slideIndex += 1)
+    setTimeout(autoUpdate, 5000);
 }
 
 function showSlides(n){
