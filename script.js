@@ -20,35 +20,40 @@ function toggleHidden(element) {
 
 var swiperPrevButton = document.getElementById('swiper-prev')
 swiperPrevButton.addEventListener('click', (_) => {
-    swiperButtonLogic('previous')
+    plusSlides(-1)
 })
 var swiperNextButton = document.getElementById('swiper-next')
 swiperNextButton.addEventListener('click', (_) => {
-    swiperButtonLogic('next')
+    plusSlides(1)
 })
 
-function swiperButtonLogic(action){
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides (slideIndex = n)
+}
+
+function showSlides(n){
     var imageArray = document.getElementsByClassName('img-swiper-item');
-    var target = 0;
+    var dotsButton = document.getElementsByClassName('dot')
+    if (n > imageArray.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = imageArray.length}
+
     for (var i = 0; i < imageArray.length; i++){
-        if (!imageArray[i].classList.contains('hidden')){
-            imageArray[i].classList.add('hidden')
-            if(action == 'previous'){
-                if(i == 0){
-                    target = 3
-                } else{
-                    target = i - 1
-                }
-            } else {
-                if(i == 3){
-                    target = 0
-                } else{
-                    target = i + 1
-                }
-            }
-            
-            break
-        }
+        imageArray[i].classList.add('hidden')
     }
-    imageArray[target].classList.remove('hidden')
+
+    for (var i = 0; i < dotsButton.length; i++){
+        dotsButton[i].classList.remove('active')
+        dotsButton[i].classList.add('hidden')
+    }
+
+    imageArray[slideIndex - 1].classList.remove('hidden')
+    dotsButton[slideIndex - 1].classList.add('active')
+    
 }
